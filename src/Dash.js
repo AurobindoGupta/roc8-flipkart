@@ -11,7 +11,7 @@ const[copy,setCopy]= useState(data);
     const handleChange= (e) =>{
            
         switch(e.target.id){
-            case 'hl':
+            case 'lh':
                 { newData = data.sort(function(a,b){
                     return a.cost - b.cost
                 })
@@ -21,18 +21,13 @@ const[copy,setCopy]= useState(data);
                     )
                 } 
             
-            case 'lh':
+            case 'hl':
                 { newData = data.sort(function(a,b){
                     return (a.cost - b.cost)
                 }).reverse()
                 console.log(newData)
                 return (
-                    <div className="card">
-                    <img src={newData.imageUrl}></img>
-                    <p>{newData.product} <span>{newData.cost}</span></p>
-                    
-    
-                </div>
+                    setCopy(newData)
                 );
             }
             case 'male':
@@ -98,6 +93,12 @@ const[copy,setCopy]= useState(data);
                                     setCopy(newData)    
                                     )
                                 } 
+                                case 'reset':
+                                    { 
+                                    return (
+                                        setCopy(data)    
+                                        )
+                                    } 
     }
     }
    
