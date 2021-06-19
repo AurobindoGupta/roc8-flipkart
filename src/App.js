@@ -7,18 +7,18 @@ function App() {
     
       <div className="App">
       <nav style={{background:"blue", display:"flex"}}>
-      <img src='flipkart.png' height="25"></img>
+      <img src='flipkart.png' height="25" alt=""></img>
       <input type="text" placeholder="Search"></input>
       <button >Search</button>
       <ul style={{display:"flex"}}>
         <li className="nav-list">
-          <a>Login</a>
+          <a href="#">Login</a>
         </li>
         <li className="nav-list">
-          <a>More</a>
+          <a href="#">More</a>
         </li>
         <li className="nav-list">
-          <a>
+          <a href="#">
             Cart
           </a>
         </li>
