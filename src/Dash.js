@@ -12,7 +12,7 @@ const[copy,setCopy]= useState(data);
            
         switch(e.target.id){
             case 'lh':
-                { newData = data.sort(function(a,b){
+                { newData = [...data].sort(function(a,b){
                     return a.cost - b.cost
                 })
                 console.log(newData)
@@ -22,7 +22,7 @@ const[copy,setCopy]= useState(data);
                 } 
             
             case 'hl':
-                { newData = data.sort(function(a,b){
+                { newData = [...data].sort(function(a,b){
                     return (a.cost - b.cost)
                 }).reverse()
                 console.log(newData)
@@ -100,9 +100,43 @@ const[copy,setCopy]= useState(data);
                                         )
                                     } 
     }
+    
+    }
+    const handleClear=()=>{
+        const rdbtn = document.querySelectorAll("input[type='radio]");
+    rdbtn.forEach(rdbtn =>{
+        if(rdbtn.checked===true)
+        rdbtn.checked= false;
+    })
     }
    
-    
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        console.log(e.target.value)
+                    switch(e.target.value){
+                        case 'lh':
+                            { newData = [...data].sort(function(a,b){
+                                return a.cost - b.cost
+                            })
+                            console.log(newData)
+                            return (
+                                setCopy(newData)    
+                                )
+                            } 
+                        
+                        case 'hl':
+                            { newData = [...data].sort(function(a,b){
+                                return (a.cost - b.cost)
+                            }).reverse()
+                            console.log(newData)
+                            return (
+                                setCopy(newData)
+                            );
+                        }       
+
+                }
+                              
+    }
 
 
 
@@ -110,7 +144,7 @@ const[copy,setCopy]= useState(data);
     return(
         
         
-        <div className=" container dashboard">
+        <div className="  dashboard">
        
             <button id="hl" onClick={handleChange}>Price: High-Low</button>
             <button id="lh" onClick={handleChange}>Price: Low-High</button>
@@ -120,15 +154,28 @@ const[copy,setCopy]= useState(data);
            <button id="dress" onClick={handleChange}>Dress</button>
            <button id="shirt" onClick={handleChange}>Shirt</button>
            <button id="tshirt" onClick={handleChange}>Tshirt</button>
+           
            <div>SIZE::
            <button id="l" onClick={handleChange}>L</button>
            <button id="xl" onClick={handleChange}>XL</button>
            <button id="xxl" onClick={handleChange}>XXL</button>
-           <button id="reset" onClick={handleChange}>reset</button>
-          
-           <hr/>
+           
+           <br/>  
 
         </div>
+        <hr/>
+        <div>
+        <form >
+           <br/>
+            <label><input type="radio" value ="male" id="male" name="gender"  onChange={handleChange}/> MALE </label>
+            <label><input type="radio" value ="female" id="female" name="gender" onChange={handleChange}  / > FEMALE </label>
+            <button onClick={handleSubmit}>Submit</button>    
+            <button id="clear" onClick={handleClear}>clear</button>
+           </form>
+          
+           <hr/>
+        </div>
+        <button id="reset" onClick={handleChange}>reset</button>
         
 
         <div className=" container dashboard items">

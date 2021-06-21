@@ -21,17 +21,12 @@ ul{
 .container{
   display: flex;
 }
-.sidenav{
-  height: 100%;
-  width: 20%;
-  background-color: bisque;
-  position: fixed;
-}
+
 
 .dashboard{
-  display:flex;
-  margin-left: 30%;
-  margin-top: 10%;
+ 
+  margin-left: 10%;
+  margin-top: 5%;
   flex-wrap: wrap;
 }
 .card{
@@ -41,4 +36,7 @@ ul{
   height: 15rem;
   width:10rem;
   overflow: auto;
+}
+button{
+  cursor: pointer;
 }
