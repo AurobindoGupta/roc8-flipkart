@@ -1,4 +1,5 @@
 
+import { useEffect } from "react";
 import { useState } from "react";
 import data from "./data.json";
 
@@ -103,12 +104,13 @@ const[copy,setCopy]= useState(data);
     
     }
     const handleClear=()=>{
-        const rdbtn = document.querySelectorAll("input[type='radio]");
+        const rdbtn = document.querySelectorAll("input[type='radio'],input[type='checkbox']");
     rdbtn.forEach(rdbtn =>{
         if(rdbtn.checked===true)
         rdbtn.checked= false;
     })
     }
+    
    
     const handleSubmit = (e)=>{
         e.preventDefault();
@@ -150,10 +152,6 @@ const[copy,setCopy]= useState(data);
             <button id="lh" onClick={handleChange}>Price: Low-High</button>
            <button id="male" onClick={handleChange}>Male</button>
            <button id="female" onClick={handleChange}>Female</button>
-           <button id="shorts" onClick={handleChange}>Shorts</button>
-           <button id="dress" onClick={handleChange}>Dress</button>
-           <button id="shirt" onClick={handleChange}>Shirt</button>
-           <button id="tshirt" onClick={handleChange}>Tshirt</button>
            
            <div>SIZE::
            <button id="l" onClick={handleChange}>L</button>
@@ -169,10 +167,15 @@ const[copy,setCopy]= useState(data);
            <br/>
             <label><input type="radio" value ="male" id="male" name="gender"  onChange={handleChange}/> MALE </label>
             <label><input type="radio" value ="female" id="female" name="gender" onChange={handleChange}  / > FEMALE </label>
-            <button onClick={handleSubmit}>Submit</button>    
+            <button type="submit">Submit</button>    
             <button id="clear" onClick={handleClear}>clear</button>
            </form>
-          
+           <form >
+           <label><input type="checkbox" name="dress" id="dress" onChange={handleChange}/>DRESS </label>
+           <label><input type="checkbox" name="shirt" id="shirt" onChange={handleChange} />SHIRT </label>
+           <label><input type="checkbox" name="short" id="shorts" onChange={handleChange}/>SHORTS </label>
+           <label><input type="checkbox" name="tshirt" id="tshirt" onChange={handleChange}/>TSHIRT </label>
+           </form>
            <hr/>
         </div>
         <button id="reset" onClick={handleChange}>reset</button>
